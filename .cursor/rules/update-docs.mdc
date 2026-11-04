@@ -1,0 +1,75 @@
+---
+description: When to update documentation and which LLM docs and skills to use
+alwaysApply: true
+---
+
+# Update Documentation on Code Changes
+
+After making code changes, check whether the following files need updating:
+
+## README.md
+
+Update when you add, remove, or rename:
+
+- Routes or API endpoints
+- Environment variables or prerequisites
+- Project structure (new files or directories)
+- Dependencies or setup steps
+- Available scripts in package.json
+- SEO assets, analytics events, or auth wiring
+
+## .env.example
+
+Update when you add, remove, or rename:
+
+- Environment variables used in `lib/env.ts` or `types/env.d.ts`
+- Keep placeholder values descriptive
+- Never put real secrets in `.env.example`
+
+## Code Organization
+
+- `app/` — Next.js App Router routes, layouts, `generateMetadata`, loading and error boundaries
+- `components/ui/` — shadcn-style primitives only
+- `components/layout/` — site-wide layout pieces such as header and footer
+- `components/features/<domain>/` — feature-specific UI (for example `auth/`, `demo/`)
+- `components/seo/` — JSON-LD and SEO helpers used in layouts
+- `hooks/` — Client hooks only; prefix with `use`
+- `lib/` — Shared utilities grouped by concern (`analytics/`, `auth/`, `errors/`, `query/`, `seo/`)
+- `actions/` — Server Actions with Zod validation and `{ data, error }` results
+- `types/` — Shared TypeScript types and ambient declarations
+- `config/` — Site and SEO defaults (`site.ts`, `seo.ts`)
+
+When adding a feature, prefer `components/features/<domain>/` and keep `components/ui/` for generic primitives only.
+
+## Tech Stack Documentation
+
+Before writing or modifying code, consult the official LLM-optimized docs:
+
+- Next.js: https://nextjs.org/docs/llms.txt
+- Expo (related mobile template): https://docs.expo.dev/llms.txt
+- Hono (backend): https://hono.dev/llms-small.txt
+- better-auth: https://better-auth.com/llms.txt
+- Prisma: https://www.prisma.io/docs/llms-full.txt
+- TanStack Query: https://tanstack.com/query/latest/docs/framework/react/overview
+- PostHog: https://posthog.com/docs
+
+## Relevant Skills
+
+When working on this repo, use the following skills as applicable:
+
+- **frontend-design** — distinctive web UI and layout
+- **vercel-react-best-practices** — React and Next.js performance
+- **shadcn** — shadcn/ui components and composition
+- **better-auth-best-practices** — auth client, sessions, plugins
+- **email-and-password-best-practices** — password reset with better-auth
+- **create-auth-skill** — scaffolding auth flows
+- **seo-audit** — structured data and technical SEO checks
+
+## MCP Servers
+
+The following MCP servers may be useful:
+
+- **user-posthog** — analytics and feature flags
+- **user-Figma** — design references
+- **cursor-ide-browser** — testing web UI
+- **user-Better Auth** — auth configuration help

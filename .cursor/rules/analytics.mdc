@@ -1,0 +1,13 @@
+---
+description: PostHog analytics and typed event tracking
+globs: "**/*.tsx,**/*.ts"
+alwaysApply: false
+---
+
+# Analytics Conventions
+
+- Initialize analytics through `AnalyticsProvider` in `components/providers.tsx`. Do not call `posthog.init` from random modules.
+- Use `track` from `@/lib/analytics/track` for custom events. Register new event names and payload shapes in `types/analytics.ts` before using them.
+- Do not call `posthog.capture` directly except inside `lib/analytics/track.ts` and the PostHog pageview helper in `lib/analytics/provider.tsx`.
+- Use `identify` and `resetAnalytics` from `@/lib/analytics/track` when user identity changes.
+- Optional PostHog features such as session recording or feature flags belong in README under an advanced section; keep the default template on autocapture and typed `track` only unless the product requires more.

@@ -1,0 +1,36 @@
+---
+description: Folders, patterns, and code style for this Next.js template
+alwaysApply: true
+---
+
+# Project Conventions
+
+## TypeScript
+
+- Do not use `any` or `unknown`. Narrow values with Zod, type guards, or explicit unions.
+- Avoid `@ts-ignore`. Use `@ts-expect-error` only with a description when unavoidable.
+- Prefer `type` aliases for object shapes and `satisfies` when inferring literal types.
+
+## Style
+
+- Do not add inline comments, emojis, or decorative gradients unless the user asks for them.
+- Follow Prettier settings in `prettier.config.mjs` (no semicolons, single quotes, tab width 4).
+
+## Data Fetching
+
+- Use TanStack Query in client components. Centralize keys in `lib/query/keys.ts`.
+- Prefetch on the server with `makeQueryClient`, `prefetchQuery`, and `HydrationBoundary` when a screen must paint under about one second with client interactivity afterward.
+- Use `apiFetch` from `lib/api-client.ts` for same-origin or API calls with caching via `next.revalidate` or tags.
+
+## Errors
+
+- Wrap unexpected failures with `tryCatch` from `lib/errors/try-catch.ts` or report them with `logError` from `lib/errors/logger.ts`.
+- Throw `AppError` from `lib/errors/app-error.ts` when domain-specific error codes are required.
+
+## Server Actions
+
+- Validate with Zod. Return `{ data, error }` instead of throwing for expected validation failures. See `actions/README.md`.
+
+## Auth and RBAC
+
+- `lib/auth/auth-client.ts` targets the backend URL in `NEXT_PUBLIC_API_URL` (for example `z0-native-app-be`). Role checks use `NEXT_PUBLIC_APP_ROLE` and `AuthGuard` in `components/features/auth/auth-guard.tsx`.

@@ -1,0 +1,14 @@
+---
+description: SEO, metadata, JSON-LD, and discoverability for App Router pages
+globs: app/**/page.tsx,app/**/layout.tsx,config/seo.ts,config/site.ts,lib/seo/**,components/seo/**
+alwaysApply: false
+---
+
+# SEO Conventions
+
+- Export `generateMetadata` (or static `metadata`) from every public `page.tsx` and the root `layout.tsx` when defaults need extension. Prefer `buildPageMetadata` from `@/config/seo` or `@/lib/seo/metadata` for page-level titles, descriptions, canonical paths, and `noIndex` when needed.
+- Keep global defaults in `config/seo.ts` and site constants in `config/site.ts`. Update `metadataBase` and Open Graph images when the production URL changes.
+- Use `JsonLdScript` with builders from `lib/seo/json-ld.ts` for Organization, WebSite, Article, BreadcrumbList, and FAQPage structured data. Validate payloads against Google Rich Results where applicable.
+- Prefer `app/opengraph-image.tsx`, `app/twitter-image.tsx`, `app/icon.tsx`, and `app/apple-icon.tsx` for generated assets. Replace with static files under `public/` when you need pixel-perfect branding; document dimensions in README (for example OG 1200x630, apple touch 180x180, favicon via `favicon.ico` or `icon.tsx`).
+- Maintain `app/robots.ts` and `app/sitemap.ts`. Extend `getDynamicRoutes` in `app/sitemap.ts` for CMS or database-driven URLs.
+- Use `app/manifest.ts` for PWA metadata and keep icons in sync with `public/` or generated routes.

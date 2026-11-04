@@ -1,0 +1,13 @@
+---
+description: Next.js performance, caching, and rendering defaults
+globs: app/**
+alwaysApply: false
+---
+
+# Performance Conventions
+
+- Prefer Server Components by default. Add `'use client'` only for state, effects, browser APIs, or TanStack Query.
+- Use `export const revalidate` and `unstable_cache` for read-heavy pages. Prefer incremental static regeneration over client-side fetching for public content.
+- Use `next/image` with explicit `width` and `height` (or `fill` with a sized parent) and configure `images.remotePatterns` in `next.config.ts` for remote hosts.
+- Keep `experimental.optimizePackageImports` aligned with heavy UI dependencies listed in `next.config.ts`.
+- For interactive lists after fast first paint, prefetch with TanStack Query on the server and hydrate with `HydrationBoundary` as in `app/prefetch-demo/page.tsx`.
