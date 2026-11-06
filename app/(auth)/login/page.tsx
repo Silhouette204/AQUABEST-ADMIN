@@ -1,31 +1,33 @@
-import Link from 'next/link'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { buildPageMetadata } from '@/config/seo'
+"use client";
 
-export function generateMetadata() {
-  return buildPageMetadata({
-    title: 'Login',
-    description: 'Sign in to your account',
-    path: '/login',
-  })
-}
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { LoginScreen } from "@/components/login/login"; // Siguraduhing tugma sa tamang folder kung nasaan ang login file mo
 
 export default function LoginPage() {
+  const router = useRouter();
+  const [error, setError] = useState<string | undefined>(undefined);
+  const [loading, setLoading] = useState(false);
+
+  async function handleLogin(values: { identifier: string; password: string; remember: boolean }) {
+    setLoading(true);
+    setError(undefined);
+
+    try {
+      console.log("Submitting login:", values);
+      // Dito mo ilalagay ang better-auth sign-in logic mo sa susunod
+    } catch (err: any) {
+      setError(err?.message || "May naganap na error sa pag-sign in. Subukan muli.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
-    <div className="flex min-h-full flex-1 items-center justify-center p-6">
-      <Card className="w-full max-w-sm">
-        <CardHeader>
-          <CardTitle>Login</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-4">
-          <p className="text-muted-foreground text-sm">
-            Wire forms to better-auth when you enable this template. See README for steps.
-          </p>
-          <Link href="/" className="text-primary text-sm underline">
-            Back home
-          </Link>
-        </CardContent>
-      </Card>
-    </div>
-  )
+    <LoginScreen
+      onSubmit={handleLogin}
+      error={error}
+      loading={loading}
+    />
+  );
 }
