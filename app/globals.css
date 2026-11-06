@@ -128,3 +128,20 @@
     @apply font-mono;
   }
 }
+
+
+:root{
+  --primary: #F5F7FA;
+  --secondary: #0B3B5C;
+  --tertiary: #1FB5B0;
+}
+
+@theme{
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-tertiary: var(--tertiary);
+}
+
+.container-1{
+  @apply max-w-7xl mx-auto px-4 py-6;
+}
