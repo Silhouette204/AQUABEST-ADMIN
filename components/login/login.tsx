@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,10 +34,16 @@ export function LoginScreen({ onSubmit, error, loading = false }: Props) {
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-
+  const router = useRouter();
+  const AFTER_LOGIN = "/dashboard";
+  
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    onSubmit?.({ identifier, password, remember });
+    if (onSubmit) {
+      onSubmit({ identifier, password, remember });
+      return;
+    }
+    router.push(AFTER_LOGIN); // TEMPORARY
   }
 
   return (
@@ -58,7 +65,7 @@ export function LoginScreen({ onSubmit, error, loading = false }: Props) {
 
         <div className="relative">
           <p className="flex items-center gap-2 text-xs uppercase tracking-wider text-white/70">
-            <MapPin size={14} /> San Isidro · Quezon City
+            <MapPin size={14} /> Phase 7C Bagong Silang · Caloocan City
           </p>
           <h2 className="mt-4 text-4xl font-semibold leading-tight">
             Pure water.
@@ -102,7 +109,7 @@ export function LoginScreen({ onSubmit, error, loading = false }: Props) {
           <h1 className="mt-5 text-3xl font-semibold text-secondary">Welcome back</h1>
           <p className="mt-2 text-sm text-secondary/60">Sign in to manage your AquaBest station.</p>
 
-          <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+          <form onSubmit={handleSubmit} noValidate className="mt-8 space-y-5">
             <div>
               <label htmlFor="identifier" className="text-xs font-semibold text-secondary">
                 Email or username

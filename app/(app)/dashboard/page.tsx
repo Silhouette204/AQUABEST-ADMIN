@@ -1,18 +1,10 @@
-import { buildPageMetadata } from '@/config/seo'
+import { AdminShell } from "@/components/main-dashboard/admin-shell";
+import { DashboardView } from "@/components/main-dashboard/dashboard";
 
-export function generateMetadata() {
-  return buildPageMetadata({
-    title: 'Dashboard',
-    description: 'Application workspace',
-    path: '/dashboard',
-  })
-}
-
-export default function DashboardPage() {
+export default function DashboardPreviewPage() {
   return (
-    <div className="flex flex-col gap-2">
-      <h1 className="text-2xl font-semibold">Dashboard</h1>
-      <p className="text-muted-foreground text-sm">Workspace overview.</p>
-    </div>
-  )
+    <AdminShell active="Dashboard">
+      <DashboardView />
+    </AdminShell>
+  );
 }

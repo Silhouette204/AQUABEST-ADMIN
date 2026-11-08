@@ -12,10 +12,12 @@ export default function LoginPage() {
   async function handleLogin(values: { identifier: string; password: string; remember: boolean }) {
     setLoading(true);
     setError(undefined);
-
+  
     try {
       console.log("Submitting login:", values);
       // Dito mo ilalagay ang better-auth sign-in logic mo sa susunod
+  
+      router.push("/dashboard"); // TEMPORARY: papasok agad habang wala pang authentication
     } catch (err: any) {
       setError(err?.message || "May naganap na error sa pag-sign in. Subukan muli.");
     } finally {
