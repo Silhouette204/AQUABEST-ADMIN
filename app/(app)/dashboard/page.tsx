@@ -1,4 +1,4 @@
-import { AdminShell } from "@/components/main-dashboard/admin-shell";
+import { AdminShell } from "@/components/main-dashboard/SystemNavigation/admin-shell";
 import { DashboardView } from "@/components/main-dashboard/dashboard";
 
 export default function DashboardPreviewPage() {

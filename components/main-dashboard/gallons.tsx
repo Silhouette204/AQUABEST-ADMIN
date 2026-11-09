@@ -1,4 +1,4 @@
-import { AdminShell } from "@/components/main-dashboard/admin-shell";
+import { AdminShell } from "@/components/main-dashboard/SystemNavigation/admin-shell";
 
 export function GallonsPage() {
   return (

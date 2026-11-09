@@ -48,7 +48,7 @@ export function LoginScreen({ onSubmit, error, loading = false }: Props) {
 
   return (
     <div className="grid min-h-screen bg-white lg:grid-cols-2">
-      {/* KALIWA: larawan */}
+     
       <aside className="relative hidden flex-col justify-between overflow-hidden p-10 text-white lg:flex">
         <Image src="/login-img.png" alt="" fill priority className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/60 to-secondary/30" />
@@ -87,22 +87,10 @@ export function LoginScreen({ onSubmit, error, loading = false }: Props) {
         </div>
       </aside>
 
-      {/* KANAN: form */}
       <main className="flex flex-col px-6 py-8 sm:px-12">
-        <div className="flex items-center justify-between">
-          {/* Logo para sa mobile lang */}
-          <span className="flex items-center gap-2 font-semibold text-secondary lg:invisible">
-            <Droplets className="text-tertiary" size={22} /> AquaBest
-          </span>
-          <p className="text-xs text-secondary/60">
-            Need access?{" "}
-            <a href="#" className="inline-flex items-center gap-0.5 font-semibold text-tertiary hover:underline">
-              Contact your administrator <ArrowUpRight size={12} />
-            </a>
-          </p>
-        </div>
+       
 
-        <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center py-10">
+        <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center py-10 gap-3">
           <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-tertiary/10 text-tertiary">
             <Droplets size={24} />
           </span>
