@@ -1,4 +1,4 @@
-import { PaymentsPage } from "@/components/main-dashboard/payments";
+import { PaymentsPage } from "@/components/main-dashboard/payment/PaymentsPage";
 
 export default function PaymentsPreviewPage() {
   return (

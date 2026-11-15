@@ -13,7 +13,7 @@ export function OrdersTable({
 }) {
 
   return (
-    <div className="rounded-xl border bg-white">
+    <div>
       <table className="w-full text-left text-sm">
         <thead className="text-xs text-secondary/60">
           <tr>
