@@ -1,4 +1,4 @@
-import { LoyaltyPage } from "@/components/main-dashboard/loyalty";
+import { LoyaltyPage } from "@/components/loyalty/LoyaltyPage";
 
 export default function LoyaltyPreviewPage() {
   return (
