@@ -1,4 +1,4 @@
-import { ReportsPage } from "@/components/main-dashboard/reports";
+import { ReportsPage } from "@/components/main-dashboard/report/ReportPage";
 
 export default function ReportsPreviewPage() {
   return (
